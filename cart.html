@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart - Rose Delight Bakery</title>
+    <link rel="stylesheet" href="design.css">
+    <style>
+        .cart-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255,105,180,0.2);
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin: 15px 0;
+            background: #fff9fb;
+            border-radius: 10px;
+            border: 2px solid #ffb6c1;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 50px;
+            color: #c2185b;
+        }
+        
+        .cart-total {
+            text-align: right;
+            font-size: 24px;
+            font-weight: bold;
+            color: #c2185b;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 3px solid #ff3f8e;
+        }
+        
+        .cart-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .cart-buttons button, .cart-buttons a {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .continue-shopping {
+            background: #ffb6c1;
+            color: #5a2a3a;
+        }
+        
+        .checkout-btn {
+            background: #ff3f8e;
+            color: white;
+        }
+        
+        .remove-btn {
+            background: #ff6fa5;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Checkout Form Styles */
+        .checkout-form-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .checkout-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(255,105,180,0.3);
+            border: 3px solid #ff3f8e;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #c2185b;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffb6c1;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #fff9fb;
+        }
+        
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .cancel-btn, .submit-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .cancel-btn {
+            background: #ffb6c1;
+            color: #5a2a3a;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, #ff6fa5, #ff3f8e);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-row">
+        <div class="logo">Rose Delight Bakery</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <div class="cart-dropdown">
+                <a href="#">🛒 Cart <span id="cart-count">0</span></a>
+                <div class="cart-dropdown-content">
+                    <a href="cart.html" class="dropdown-btn view-cart-btn">View Cart</a>
+                    <button onclick="clearCart()" class="dropdown-btn clear-cart-btn">Clear Cart</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="cart-container">
+    <h1 style="color: #c2185b; text-align: center; margin-bottom: 30px;">🛒 Your Shopping Cart</h1>
+    
+    <div id="cart-items-container">
+        <div class="empty-cart" id="empty-cart">
+            <h3>Your cart is empty</h3>
+            <p>Add some delicious cakes from our menu!</p>
+        </div>
+    </div>
+    
+    <div id="cart-total" class="cart-total" style="display: none;">
+        Total: Rs <span id="total-price">0</span>
+    </div>
+    
+    <div class="cart-buttons">
+        <a href="index.html" class="continue-shopping">← Continue Shopping</a>
+        <button onclick="showCheckoutForm()" class="checkout-btn" id="checkout-btn" style="display: none;">
+            Proceed to Checkout →
+        </button>
+    </div>
+</div>
+
+<!-- Checkout Form -->
+<div id="checkout-form" class="checkout-form-container" style="display: none;">
+    <div class="checkout-form">
+        <h2 style="color: #c2185b; text-align: center; margin-bottom: 20px;">📝 Checkout Details</h2>
+        
+        <form id="checkoutForm" onsubmit="return processCheckout(event)">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="checkout-name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="checkout-phone" placeholder="03XX-XXXXXXX" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Delivery Address *</label>
+                <textarea id="checkout-address" rows="3" placeholder="House#, Street, Area, City" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Payment Method</label>
+                <select id="checkout-payment">
+                    <option value="cash">Cash on Delivery</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="jazzcash">JazzCash</option>
+                    <option value="easypaisa">EasyPaisa</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Special Instructions</label>
+                <textarea id="checkout-notes" rows="2" placeholder="Any special requests..."></textarea>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" onclick="hideCheckoutForm()" class="cancel-btn">Cancel</button>
+                <button type="submit" class="submit-btn">Place Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="contact-info" style="margin-bottom:15px;">
+        <p>📞 Phone: +92 300 1234567</p>
+        <p>💬 WhatsApp: +92 300 7654321</p>
+        <p>✉️ Email: contact@rosedelight.com</p>
+        <p>📍 Address: 123 Bakery Street, Karachi, Pakistan</p>
+    </div>
+    <p>© 2026 Rose Delight Bakery | Taste You Trust</p>
+</footer>
+
+<script>
+    
+    // 1. When page loads
+    window.onload = function() {
+        showCartItems();
+    };
+    
+    // 2. Show cart items
+    function showCartItems() {
+        // Get cart from storage
+        var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
+        
+        // Update cart counter in header
+        document.getElementById('cart-count').textContent = cart.length;
+        
+        var container = document.getElementById('cart-items-container');
+        var totalDiv = document.getElementById('cart-total');
+        var checkoutBtn = document.getElementById('checkout-btn');
+        
+        // If cart is empty
+        if (cart.length === 0) {
+            container.innerHTML = '<div class="empty-cart"><h3>Your cart is empty</h3><p>Add some cakes from our menu!</p></div>';
+            totalDiv.style.display = 'none';
+            checkoutBtn.style.display = 'none';
+            return;
+        }
+        
+        // If cart has items
+        var html = '';
+        var total = 0;
+        
+        // Add each item
+        for (var i = 0; i < cart.length; i++) {
+            var item = cart[i];
+            var itemTotal = item.price;
+            
+            html += '<div class="cart-item">';
+            html += '<div><h3 style="color: #b7154a;">' + item.name + '</h3>';
+            html += '<p>Price: Rs ' + item.price + '</p></div>';
+            html += '<div style="text-align:right;"><h3 style="color: #ff3f8e;">Rs ' + itemTotal + '</h3>';
+            html += '<button class="remove-btn" onclick="removeItem(' + i + ')">Remove</button></div>';
+            html += '</div>';
+            
+            total += itemTotal;
+        }
+        
+        // Show items
+        container.innerHTML = html;
+        
+        // Show total
+        document.getElementById('total-price').textContent = total;
+        totalDiv.style.display = 'block';
+        checkoutBtn.style.display = 'block';
+    }
+    
+    // 3. Remove item from cart
+    function removeItem(index) {
+        var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
+        
+        if (confirm("Remove this item from cart?")) {
+            cart.splice(index, 1); // Remove 1 item at index
+            localStorage.setItem('bakeryCart', JSON.stringify(cart));
+            showCartItems(); // Refresh display
+        }
+    }
+    
+    // 4. Clear cart (same as other pages)
+    function clearCart() {
+        var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
+        
+        if (cart.length === 0) {
+            alert("Cart is already empty!");
+            return;
+        }
+        
+        if (confirm("Clear all items from cart?")) {
+            localStorage.removeItem('bakeryCart');
+            showCartItems();
+            alert("Cart cleared!");
+        }
+    }
+    
+    // 5. Show checkout form
+    function showCheckoutForm() {
+        var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
+        
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+        
+        document.getElementById('checkout-form').style.display = 'flex';
+    }
+    
+    // 6. Hide checkout form
+    function hideCheckoutForm() {
+        document.getElementById('checkout-form').style.display = 'none';
+    }
+    
+    // 7. Process checkout - SIMPLE
+    function processCheckout(event) {
+        event.preventDefault(); 
+        
+        // Get form values
+        var name = document.getElementById('checkout-name').value;
+        var phone = document.getElementById('checkout-phone').value;
+        var address = document.getElementById('checkout-address').value;
+        
+        // Check if filled
+        if (name === "" || phone === "" || address === "") {
+            alert("Please fill all fields!");
+            return false;
+        }
+        
+        // Get cart total
+        var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
+        var total = 0;
+        for (var i = 0; i < cart.length; i++) {
+            total += cart[i].price;
+        }
+        
+        // Show confirmation
+        alert("Thank you " + name + "!\nYour order total: Rs " + total + "\nWe'll contact you soon!");
+        
+        // Clear cart
+        localStorage.removeItem('bakeryCart');
+        
+        // Reset form
+        document.getElementById('checkoutForm').reset();
+        
+        // Hide form
+        hideCheckoutForm();
+        
+        // Show empty cart
+        showCartItems();
+        
+        // Go to home page after 2 seconds
+        setTimeout(function() {
+            window.location.href = "index.html";
+        }, 2000);
+        
+        return false;
+    }
+</script>
+
+</body>
+</html>

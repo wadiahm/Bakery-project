@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Specials | Rose Delight Bakery</title>
+<link rel="stylesheet" href="design.css">
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="header-row">
+        <div class="logo">Rose Delight Bakery</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="special.html">Specials</a>
+            <a href="drinks.html">Drinks</a>
+            <div class="cart-dropdown">
+                <a href="#">🛒 Cart <span id="cart-count">0</span></a>
+                <div class="cart-dropdown-content">
+                    <a href="cart.html" class="dropdown-btn view-cart-btn">View Cart</a>
+                    <button onclick="clearCart()" class="dropdown-btn clear-cart-btn">Clear Cart</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== HERO SECTION ===== -->
+<div class="hero">
+    <h1>Our Special Creations</h1>
+    <p>Handpicked delights for every celebration</p>
+</div>
+
+<!-- ===== SPECIALS: FEATURED CAKES ===== -->
+<section class="category-section" id="specials">
+    <div class="section-title">
+        <h2>Featured Cakes</h2>
+        <p>Unique flavors crafted for you</p>
+    </div>
+
+    <div class="products">
+        <div class="product-card">
+            <img src="sp1.png">
+            <div class="product-info">
+                <h3>Raffelo Cake</h3>
+                <p>Rich hazelnut & chocolate delight</p>
+                <button onclick="addToCart('Raffelo Cake', 750)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="sp3.jpeg">
+            <div class="product-info">
+                <h3>Vanilla Muffin</h3>
+                <p>Fluffy vanilla sponge with cream</p>
+                <button onclick="addToCart('Vanilla Muffin Special', 550)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="sp2.png">
+            <div class="product-info">
+                <h3>Rainbow Cake</h3>
+                <p>Caramel biscuit layers for crunchy delight</p>
+                <button onclick="addToCart('Rainbow Cake', 680)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="sp4.jpeg">
+            <div class="product-info">
+                <h3>Spring Moctail</h3>
+                <p>Rich layers of chocolate goodness</p>
+                <button onclick="addToCart('Spring Moctail', 520)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="sp5.jpeg">
+            <div class="product-info">
+                <h3>Fudge Muffin</h3>
+                <p>Soft sponge with cream cheese frosting</p>
+                <button onclick="addToCart('Fudge Muffin Special', 580)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="sp6.jpeg">
+            <div class="product-info">
+                <h3>Iced Vanilla Latte</h3>
+                <p>Velvet cake with rose-infused cream cheese.</p>
+                <button class="add-to-cart" onclick="addToCart('Iced Vanilla Latte', 500)">Order Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer id="contact">
+    <div class="contact-info" style="margin-bottom:15px;">
+        <p>📞 Phone: +92 300 1234567</p>
+        <p>💬 WhatsApp: +92 300 7654321</p>
+        <p>✉️ Email: contact@rosedelight.com</p>
+        <p>📍 Address: 123 Bakery Street, Karachi, Pakistan</p>
+    </div>
+    <p>© 2026 Rose Delight Bakery | Taste You Trust</p>
+</footer>
+
+]<script src="checkout.js"></script>
+
+</body>
+</html>

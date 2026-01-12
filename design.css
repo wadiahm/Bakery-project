@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #fff1f6;
+    color: #5a2a3a;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(to right, #ff6fa5, #ff3f8e);
+    padding: 18px 50px;
+    color: white;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Navigation */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   SIMPLE CART DROPDOWN (2 BUTTONS ONLY)
+   ===================================================== */
+.cart-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+    padding: 15px;
+    z-index: 1000;
+    border: 2px solid #ffb6c1;
+}
+
+.cart-dropdown:hover .cart-dropdown-content {
+    display: block;
+}
+
+
+
+/* Simple dropdown buttons */
+.dropdown-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.view-cart-btn {
+    background: #ff3f8e;
+    color: white;
+}
+
+.clear-cart-btn {
+    background: #ffb6c1;
+    color: #5a2a3a;
+}
+
+.view-cart-btn:hover {
+    background: #e7337e;
+}
+
+.clear-cart-btn:hover {
+    background: #ff9eb5;
+}
+
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
+.hero {
+    background: linear-gradient(rgba(255,182,193,0.4), rgba(255,182,193,0.4)),
+                url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80");
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* =====================================================
+   HERO MENU
+   ===================================================== */
+.hero-menu {
+    margin-top: 30px;
+    display: inline-flex;
+    gap: 30px;
+    background: rgba(255,255,255,0.9);
+    padding: 12px 30px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.hero-menu a {
+    color: #c2185b;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.hero-menu a:hover {
+    color: #ff3f8e;
+}
+
+/* =====================================================
+   PRODUCTS SECTION
+   ===================================================== */
+.category-section {
+    padding: 60px 40px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    color: #c2185b;
+}
+
+.section-title p {
+    font-size: 15px;
+    max-width: 700px;
+    margin: 10px auto;
+}
+
+/* =====================================================
+   PRODUCT CARDS
+   ===================================================== */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+}
+
+.product-card img {
+    width: 100%;
+    max-height: 250px;
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+    border-radius: 8px 8px 0 0;
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-info h3 {
+    color: #b7154a;
+    margin-bottom: 5px;
+}
+
+.product-info p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.product-info button {
+    background: #ff3f8e;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.product-info button:hover {
+    background: #e7337e;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+footer {
+    background: #b7154a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}

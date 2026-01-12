@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Drinks | Rose Delight Bakery</title>
+<link rel="stylesheet" href="design.css">
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="header-row">
+        <div class="logo">Rose Delight Bakery</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="special.html">Specials</a>
+            <a href="drinks.html">Drinks</a>
+            <div class="cart-dropdown">
+                <a href="#">🛒 Cart <span id="cart-count">0</span></a>
+                <div class="cart-dropdown-content">
+                    <a href="cart.html" class="dropdown-btn view-cart-btn">View Cart</a>
+                    <button onclick="clearCart()" class="dropdown-btn clear-cart-btn">Clear Cart</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== HERO SECTION ===== -->
+<div class="hero">
+    <h1>Refreshing Drinks</h1>
+    <p>Perfect beverages to complement your sweets</p>
+</div>
+
+<!-- ===== DRINKS: HOT & COLD ===== -->
+<section class="category-section" id="drinks">
+    <div class="section-title">
+        <h2>Beverages</h2>
+        <p>Drinks to cozy your everyday...</p>
+    </div>
+
+    <div class="products">
+        <div class="product-card">
+            <img src="drk3.jpeg">
+            <div class="product-info">
+                <h3>Chai</h3>
+                <p>Strong and aromatic coffee</p>
+                <button onclick="addToCart('Chai', 180)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="drk5.jpeg">
+            <div class="product-info">
+                <h3>Cappuccino</h3>
+                <p>Foamy coffee with milk</p>
+                <button onclick="addToCart('Cappuccino', 220)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="drk1.jpeg">
+            <div class="product-info">
+                <h3>Peach Ice Tea</h3>
+                <p>Smooth coffee with creamy milk</p>
+                <button onclick="addToCart('Peach Ice Tea', 240)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="drk2.jpeg">
+            <div class="product-info">
+                <h3>Hot Chocolate</h3>
+                <p>Rich chocolatey delight</p>
+                <button onclick="addToCart('Hot Chocolate', 200)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="drk6.jpeg">
+            <div class="product-info">
+                <h3>Soda</h3>
+                <p>Cool & Fizzy drink.</p>
+                <button onclick="addToCart('Soda', 120)">Order Now</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="drk4.jpeg">
+            <div class="product-info">
+                <h3>Herbal Tea</h3>
+                <p>Relaxing and aromatic herbs</p>
+                <button onclick="addToCart('Herbal Tea', 150)">Order Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ===== FOOTER ===== -->
+<footer id="contact">
+    <div class="contact-info" style="margin-bottom:15px;">
+        <p>📞 Phone: +92 300 1234567</p>
+        <p>💬 WhatsApp: +92 300 7654321</p>
+        <p>✉️ Email: contact@rosedelight.com</p>
+        <p>📍 Address: 123 Bakery Street, Karachi, Pakistan</p>
+    </div>
+    <p>© 2026 Rose Delight Bakery | Taste You Trust</p>
+</footer>
+
+<script src="checkout.js"></script>
+
+</body>
+</html>
