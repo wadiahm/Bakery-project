@@ -40,9 +40,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* =====================================================
-   SIMPLE CART DROPDOWN (2 BUTTONS ONLY)
-   ===================================================== */
+/*   SIMPLE CART DROPDOWN (2 BUTTONS ONLY) */
 .cart-dropdown {
     position: relative;
     display: inline-block;
@@ -239,4 +237,5 @@ footer {
     text-align: center;
     padding: 25px;
     margin-top: 50px;
+
 }
