@@ -117,9 +117,7 @@ nav a:hover {
     margin-top: 10px;
 }
 
-/* =====================================================
-   HERO MENU
-   ===================================================== */
+/*  HERO MENU */
 .hero-menu {
     margin-top: 30px;
     display: inline-flex;
@@ -141,9 +139,7 @@ nav a:hover {
     color: #ff3f8e;
 }
 
-/* =====================================================
-   PRODUCTS SECTION
-   ===================================================== */
+/* PRODUCTS SECTION */
 .category-section {
     padding: 60px 40px;
 }
@@ -164,9 +160,7 @@ nav a:hover {
     margin: 10px auto;
 }
 
-/* =====================================================
-   PRODUCT CARDS
-   ===================================================== */
+/*  PRODUCT CARDS */
 .products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -226,9 +220,7 @@ nav a:hover {
     background: #e7337e;
 }
 
-/* =====================================================
-   FOOTER
-   ===================================================== */
+/* FOOTER */
 footer {
     background: #b7154a;
     color: white;
@@ -237,4 +229,5 @@ footer {
     margin-top: 50px;
 
 }
+
 
