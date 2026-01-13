@@ -63,8 +63,6 @@ nav a:hover {
     display: block;
 }
 
-
-
 /* Simple dropdown buttons */
 .dropdown-btn {
     width: 100%;
@@ -227,7 +225,4 @@ footer {
     text-align: center;
     padding: 25px;
     margin-top: 50px;
-
 }
-
-
