@@ -180,9 +180,6 @@
         </div>
     </div>
     
-    <div id="cart-total" class="cart-total" style="display: none;">
-        Total: Rs <span id="total-price">0</span>
-    </div>
     
     <div class="cart-buttons">
         <a href="index.html" class="continue-shopping">← Continue Shopping</a>
@@ -254,64 +251,59 @@
     };
     
     // 2. Show cart items
-    function showCartItems() {
-        // Get cart from storage
-        var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
-        
-        // Update cart counter in header
-        document.getElementById('cart-count').textContent = cart.length;
-        
-        var container = document.getElementById('cart-items-container');
-        var totalDiv = document.getElementById('cart-total');
-        var checkoutBtn = document.getElementById('checkout-btn');
-        
-        // If cart is empty
-        if (cart.length === 0) {
-            container.innerHTML = '<div class="empty-cart"><h3>Your cart is empty</h3><p>Add some cakes from our menu!</p></div>';
-            totalDiv.style.display = 'none';
-            checkoutBtn.style.display = 'none';
-            return;
-        }
-        
-        // If cart has items
-        var html = '';
-        var total = 0;
-        
-        // Add each item
-        for (var i = 0; i < cart.length; i++) {
-            var item = cart[i];
-            var itemTotal = item.price;
-            
-            html += '<div class="cart-item">';
-            html += '<div><h3 style="color: #b7154a;">' + item.name + '</h3>';
-            html += '<p>Price: Rs ' + item.price + '</p></div>';
-            html += '<div style="text-align:right;"><h3 style="color: #ff3f8e;">Rs ' + itemTotal + '</h3>';
-            html += '<button class="remove-btn" onclick="removeItem(' + i + ')">Remove</button></div>';
-            html += '</div>';
-            
-            total += itemTotal;
-        }
-        
-        // Show items
-        container.innerHTML = html;
-        
-        // Show total
-        document.getElementById('total-price').textContent = total;
-        totalDiv.style.display = 'block';
-        checkoutBtn.style.display = 'block';
+function showCartItems() {
+    // Get cart from storage
+    var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
+
+    // Update cart counter in header
+    document.getElementById('cart-count').textContent = cart.length;
+
+    var container = document.getElementById('cart-items-container');
+    var checkoutBtn = document.getElementById('checkout-btn');
+
+    // If cart is empty
+    if (cart.length === 0) {
+        container.innerHTML = `
+            <div class="empty-cart">
+                <h3>Your cart is empty</h3>
+                <p>Add some delicious cakes from our menu!</p>
+            </div>
+        `;
+        checkoutBtn.style.display = 'none'; // hide checkout
+        return;
     }
-    
-    // 3. Remove item from cart
-    function removeItem(index) {
-        var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
-        
-        if (confirm("Remove this item from cart?")) {
-            cart.splice(index, 1); // Remove 1 item at index
-            localStorage.setItem('bakeryCart', JSON.stringify(cart));
-            showCartItems(); // Refresh display
-        }
+
+    // If cart has items
+    var html = '';
+    var total = 0;
+
+    for (var i = 0; i < cart.length; i++) {
+        var item = cart[i];
+        var itemTotal = item.price;
+
+        html += `
+            <div class="cart-item">
+                <div>
+                    <h3 style="color: #b7154a;">${item.name}</h3>
+                    <p>Price: Rs ${item.price}</p>
+                </div>
+                <div style="text-align:right;">
+                    <h3 style="color: #ff3f8e;">Rs ${itemTotal}</h3>
+                    <button class="remove-btn" onclick="removeItem(${i})">Remove</button>
+                </div>
+            </div>
+        `;
+
+        total += itemTotal;
     }
-    
+
+    // Show items
+    container.innerHTML = html;
+
+    // Show checkout button
+    checkoutBtn.style.display = 'block';
+}
+
     // 4. Clear cart (same as other pages)
     function clearCart() {
         var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
