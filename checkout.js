@@ -1,6 +1,4 @@
-// ======================================
 // SIMPLE BAKERY CART SYSTEM
-// ======================================
 
 var myCart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
 
@@ -76,4 +74,5 @@ window.onload = function() {
     console.log("Bakery website loaded!");
     updateCartNumber();
     // REMOVE the hover effects JavaScript - use CSS instead
+
 };
