@@ -21,9 +21,7 @@ function addToCart(itemName, itemPrice, event) {
     if (event && event.target) {
         var btn = event.target;
         var originalText = btn.textContent;
-        btn.textContent = "Added!";
-        btn.style.backgroundColor = "#4CAF50";
-        
+        btn.textContent = "Added!";       
         setTimeout(function() {
             btn.textContent = originalText;
             btn.style.backgroundColor = "";
@@ -73,6 +71,6 @@ function validateContactForm() {
 window.onload = function() {
     console.log("Bakery website loaded!");
     updateCartNumber();
-    // REMOVE the hover effects JavaScript - use CSS instead
 
 };
+
