@@ -303,6 +303,21 @@ function showCartItems() {
     // Show checkout button
     checkoutBtn.style.display = 'block';
 }
+// 3. Remove individual item
+function removeItem(index) {
+    var cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
+    
+    // Remove item at the given index
+    cart.splice(index, 1);
+    
+    // Save updated cart
+    localStorage.setItem('bakeryCart', JSON.stringify(cart));
+    
+    // Refresh cart display
+    showCartItems();
+    
+    alert("Item removed from cart!");
+}
 
     // 4. Clear cart (same as other pages)
     function clearCart() {
@@ -385,3 +400,4 @@ function showCartItems() {
 
 </body>
 </html>
+
